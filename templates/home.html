@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140461850-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-140461850-1');
+  </script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.7/dist/mini-default.min.css">
+  <!--
+  Note: This is a good css too worth looking at in the future : https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-nord.min.css
+  -->
+
+  <link rel="stylesheet" href="./static/style.css">
+
+  <meta charset="UTF-8">
+  <title> mASR - phuc.px156248 </title>
+</head>
+
+<div class="common">
+
+  <body>
+
+    <header class="sticky row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <a href="#" class="logo"> vi-mASR</a>
+        <a href="./" class="button"> App </a>
+        <a href="https://gitlab.com/faker_phan/masr2" class="button"> Source Code </a>
+        <a href="https://www.facebook.com/sdotfaker" class="button" target="_blank"> Contact Me</a>
+      </div>
+    </header>
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <br />
+        <h1>Vietnamese speech recognition for people with speech disabilities <small style="font-size: 18px; font-style: italic; font-family: Serif"> Deployed by
+            Phan Xuân Phúc 20156248 - Sinh viên viện CNTT - Trường Đại Học Bách Khoa Hà Nội </small></h1>
+        <p>
+          Import an audio file or record a short voice.
+          The description for that audio will be displayed below.
+        <p></p>
+
+            <p style="font-weight: bold">Import an audio file : </p>
+            <input type="file" id="file" style="display:inline;" />
+            <button id="button_upload" name="button" class="primary" value="Upload File" onclick="thisFileUpload();">Upload File</button> <span
+              id="file-name"></span>
+            <script>
+              function thisFileUpload() {
+                document.getElementById("file").click();
+              };
+              document.getElementById('file').onchange = function () {
+                var fileName = this.value.split("\\");
+                console.log(fileName[fileName.length - 1])
+                var a = document.getElementById('file_in');
+                 a.value = fileName[fileName.length - 1];
+              };
+            </script>
+        <form action="{{ url_for('predict')}}"method="post">
+          <input type="text" name="file_in" readonly="readonly" size="50" maxlength="1500" id="file_in" style="text-align:center;"><br>
+          <input class="primary" type="submit" value="PREDICT" method="get" size="20">
+        </form>
+            <div class="primary"><p style="font-weight: bold" >Predicted: </p></div>
+            <form class="md-form">
+              <div class="file-field">
+                <div class="file-path-wrapper">
+                  {{predict_text}}
+                </div>
+              </div>
+            </form>
+        <div class="primary"><p style="font-weight: bold">True description: </p></div>
+            <form class="md-form">
+              <div class="file-field">
+                <div class="file-path-wrapper">
+                  {{label_text}}
+                </div>
+              </div>
+            </form>
+        Predicted Time is : {{time_predict}}
+
+      </div>
+    </div>
+
+    <br>
+    <p align="center">This is a end-to-end Machine Learning application for recognize speechs of the disabled people.
+    </p>
+
+    <div class="col-sm col-md-8 col-md-offset-2 col-lg-5 col-lg-offset-4 row" style="text-align: center;">
+      <div class="card fluid" style=" width: 80%;">
+        <ul style="text-align: left;">
+          <small>Hyperparameter optimization ; Neural network;</small>
+          <small>MFCCs ; Recurrent Neural Networks; Convolution </small>
+          <small>Connectionist Temporal Classification ; Decoding ;</small>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container" style="height: 8rem; position: relative;">
+      <span class="toast doc" style="position: absolute;">
+        Đồ án tốt nghiệp kì 20191 - ĐHBKHN | &copy; 2019 | <a style="color: red; font-size: 18px;"
+          href="https://www.facebook.com/sdotfaker"> Phan Xuân Phúc - 20156248</a>
+      </span>
+    </div>
+
+
+    <footer class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1" style="text-align:center;">
+        Đồ án tốt nghiệp kì 20191 - ĐHBKHN | &copy; 2019 | <a href="https://www.facebook.com/sdotfaker"> Phan Xuân
+          Phúc</a>
+      </div>
+    </footer>
+</div>
+
+
+<script src="./static/index.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
+</body>

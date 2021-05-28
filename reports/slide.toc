@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Giới thiệu bài toán}{3}{0}{1}
+\beamer@sectionintoc {2}{Dataset}{15}{0}{2}
+\beamer@sectionintoc {3}{Định hướng giải pháp}{29}{0}{3}
+\beamer@sectionintoc {4}{Giải quyết bài toán}{35}{0}{4}
+\beamer@sectionintoc {5}{Kết quả đánh giá}{83}{0}{5}
+\beamer@sectionintoc {6}{Kết luận và hướng phát triển trong tương lai}{100}{0}{6}
